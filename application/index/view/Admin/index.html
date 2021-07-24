@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>管理员端</title>
+
+<!--可无视-->
+
+<link href="/financial/public/static/css/global.css" rel="stylesheet">
+
+<!--必要样式-->
+
+<link type="text/css" href="/financial/public/static/css/style.css" rel="stylesheet">
+
+<link href="/financial/public/static/css/component.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/financial/public/static/js/jquery.js"></script>
+
+<script type="text/javascript" src="/financial/public/static/js/modernizr.custom.js"></script>
+
+<script type="text/javascript" src="/financial/public/static/js/jquery.dlmenu.js"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="" class="user-icon"><span>用户中心</span></a>
+
+    <div id="dl-menu" class="dl-menuwrapper">
+
+        <button id="dl-menu-button">Open Menu</button>
+
+        <ul class="dl-menu">
+            
+            <li><a href="">用户管理</a></li>
+            <li><a href="">查看明细</a></li>
+            <li>
+                <a href="Line">科目管理</a>
+                <ul class="dl-submenu">
+                    <li class="dl-back"><a href="#">返回上一级</a></li>
+                    <li><a href="">查看科目</a></li>
+                    <li><a href="">增加科目</a></li>
+                </ul>
+            </li>
+            <li><a href="{:url('Login/logout')}">注销</a></li>
+        </ul>
+    </div>
+</header>
+
+<script type="text/javascript">
+$(function(){
+
+    $( '#dl-menu' ).dlmenu();
+
+});
+</script>
+</body>
+</html>
