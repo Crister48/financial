@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.menu{
+    height: 2em;
+    background-color:darkgreen;
+    display: flex;
+}
+.menu ul{
+    display: flex;
+    list-style: none;
+    align-content: space-evenly;
+    margin: 5px 10px;
+}
+.menu ul li {
+    padding: 0px 5px;
+}
+.menu ul li .active a{
+    color: orangered;
+}
+ 
+.menu ul li a {
+    color: white;
+    line-height: 2em;
+    text-align: center;
+ 
+}
+.menu ul li a:hover,a:active {
+    color: orangered;
+    background-color:green;
+}
+ 
+@media only screen and (min-width: 310px) and (max-width: 568px){
+    .menu{
+        font-size:0.5em;
+    }
+}
+ 
