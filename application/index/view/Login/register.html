@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <title>用户登录</title>
+        <title>用户注册</title>
         <link rel="stylesheet" type="text/css" href="/thinkphp5/public/static/bootstrap-3.3.5-dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/financial/public/static/css/log.css">
     </head>
     <body>
-        <form class="form-inline"action="{:url('login')}" method="post" id="myform">
+        <form class="form-inline"action="{:url('registerindex')}" method="post" id="myform">
         <div class="login">
             <h1 ><font color="#CEE3F6 " size="6">梦云智 财务管理系统</font></h1>
-            <h2>用户登录</h2>
+            <h2>用户注册</h2>
             <div>
                 <label for="username">用户名:</label>
                 <input class="form-control" type="text" name="username" id="username" required="/" />
@@ -27,14 +27,13 @@
             <br>
             
             <a></a>
-            <button type="submit" class="btn btn-info" class="bg-info">登录
+            <button type="submit" class="btn btn-info" class="bg-info">注册
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 </button>
         </form>
-        <a href="{:url('register')}">注册账号</a>
         </div>
     </body>
 </html>
