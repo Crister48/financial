@@ -58,4 +58,25 @@ class LoginController extends Controller
             return $this->error('注销失败',url(''));
         }
     }
+    public function registerindex(){
+         $postData = Request::instance()->post();
+
+        // 验证用户名是否存在
+        $map = array('username'  => $postData['username']);
+        $User = Admin::get($map);
+        if(is_null($User)){
+            $User = User::get($map);
+        }
+        if (!is_null($User)) {
+            return $this->error('用户名已存在', url('index'));
+        }
+        $users=new User();
+        $users->username=$postData['username'];
+        $users->password=$postData['password'];
+        $users->save($users->getData());
+        return $this->success('注册成功',url('login/index'));
+    }
+    public function register(){
+        return $this->fetch();
+    }
 }
