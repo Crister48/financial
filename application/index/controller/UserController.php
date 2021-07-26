@@ -4,12 +4,54 @@ use think\Controller;
 use think\Request; 
 use think\Db;
 use app\common\model\User;
+use app\common\model\Klass;
 class UserController extends Index1Controller
 {
     public function index(){
         $User=User::get(session('id'));
         $this->assign('User',$User);
         return $this->fetch();
+    }
+    public function editmoney(){
+        $User=User::get(session('id'));
+        $this->assign('User',$User);
+        return $this->fetch();
+    }
+    public function updatemoney(){
+        $teacherid = input('post.id');
+        $oldPassword = input('post.oldPassword');
+        $password = input('post.password');
+
+        $Teacher = User::get($teacherid);
+
+        if(is_null($Teacher)) {
+            return $this->error('未获取到任何用户');
+        }
+        $newPasswordAgain = input('post.newPasswordAgain');
+
+
+        //判断密码是否正确
+        
+        if($oldPassword != $Teacher->password) {
+           return $this->error('密码错误', url('editmoney'));
+        }
+
+        
+
+        
+
+        //判断两次新密码是否一致
+         if($newPasswordAgain != $password) {
+           return $this->error('两次输入的存款不一致', url('editmoney'));
+        }
+
+        
+        // var_dump(Teacher)
+        $Teacher->money=$password;
+        if(!$Teacher->save()) {
+            return $this->error('更新失败', url('ecitmoney'));
+        }
+         return $this->success('修改成功', url('index'));
     }
     public function edit(){
         $User=User::get(session('id'));

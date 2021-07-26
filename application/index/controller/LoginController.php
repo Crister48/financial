@@ -4,6 +4,7 @@ use think\Controller;
 use think\Request; 
 use app\common\model\User;
 use app\common\model\Admin;
+use app\common\model\Klass;
 class LoginController extends Controller
 {
     public function index()
