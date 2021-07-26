@@ -2,14 +2,59 @@
 <html lang="zh-cn">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <meta charset="UTF-8">
-    <title>修改密码</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>修改密码</title>
+
+<!--可无视-->
+
+<link href="/financial/public/static/css/global.css" rel="stylesheet">
+
+<!--必要样式-->
+
+<link type="text/css" href="/financial/public/static/css/style.css" rel="stylesheet">
+
+<link href="/financial/public/static/css/component.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/financial/public/static/js/jquery.js"></script>
+
+<script type="text/javascript" src="/financial/public/static/js/modernizr.custom.js"></script>
+
+<script type="text/javascript" src="/financial/public/static/js/jquery.dlmenu.js"></script>
+
 </head>
 
-<body class="container" >
+<body class="" >
+    <header class="header">
+
+    <span></span>
+
+    <div id="dl-menu" class="dl-menuwrapper">
+
+        <button id="dl-menu-button">Open Menu</button>
+
+        <ul class="dl-menu">
+            <li><a href="{:url('index')}">查看明细</a></li>
+            <li><a href="{:url('lookuser')}">用户管理</a></li>
+
+            
+            <li>
+                <a href="Line">科目管理</a>
+                <ul class="dl-submenu">
+                    <li class="dl-back"><a href="#">返回上一级</a></li>
+                    <li><a href="{:url('lookklass')}">查看科目</a></li>
+                    <li><a href="{:url('addklass')}">增加科目</a></li>
+                </ul>
+            </li>
+            <li><a href="{:url('edit')}">修改密码</a></li>
+            <li><a href="{:url('Login/logout')}">注销</a></li>
+        </ul>
+    </div>
+</header>
     <!--菜单导航-->
     <div class="row" >
         <div class="col-md-12" >
@@ -56,6 +101,13 @@
             </nav>
         </div>
     </div>
+    <script type="text/javascript">
+$(function(){
+
+    $( '#dl-menu' ).dlmenu();
+
+});
+</script>
 </body>
 
 </html>
