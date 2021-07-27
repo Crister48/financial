@@ -8,11 +8,7 @@ use app\common\model\User;
 use app\common\model\Klass;
 class AdminController extends IndexController
 {
-    public function index(){
-        $User=Admin::get(session('id'));
-        $this->assign('User',$User);
-        return $this->fetch();
-    }
+    
         public function edit(){
         $User=Admin::get(session('id'));
         $this->assign('User',$User);
@@ -58,7 +54,7 @@ class AdminController extends IndexController
             $htmls = $this->fetch();
         return $this->fetch();
     }
-    public function lookuser(){
+    public function index(){
         $Usera=Admin::get(session('id'));
         $this->assign('User',$Usera);
         $name = Request::instance()->get('username');
@@ -102,7 +98,7 @@ class AdminController extends IndexController
         $Teacher->password="000000";
         $Teacher->save($Teacher->getData());
         // 进行跳转
-        return $this->success('重置成功，新密码为 000000', url('lookuser'));
+        return $this->success('重置成功，新密码为 000000', url('index'));
     }
     public function delete()
     {
@@ -127,7 +123,7 @@ class AdminController extends IndexController
         }
 
         // 进行跳转
-        return $this->success('删除成功', url('lookuser'));
+        return $this->success('删除成功', url('index'));
     }
     public function deleteklass(){
         // 获取pathinfo传入的ID值.
