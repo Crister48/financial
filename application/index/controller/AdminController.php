@@ -23,8 +23,8 @@ class AdminController extends IndexController
             var_dump($name);
             $klass->name=$name;
 
-            if(!$klass->save($klass->getData())){
-                return $this->success('新增失败', url('addklass'));
+            if(!$klass->validate()->save($klass->getData())){
+                return $this->success('新增失败,科目名称不合法', url('addklass'));
             }
             return $this->success('新增成功', url('addklass'));
         }

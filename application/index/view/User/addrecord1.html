@@ -55,18 +55,18 @@
         </ul>
     </div>
 </header>
-<div class="row">
+<div class="row text-center" >
         <div class="col-md-12">
             <form action="{:url('insertrecord')}" method="post">
                 <input type="hidden" name="type" value="1">
-                <input type="hidden" name="create_time" value="{:time()}" >
+                <input type="hidden" name="create_time" value="{:time()}" ><br>
                 <label>名称:</label>
 
-                <input type="text" name="name" value="" /><br>
+                <input type="text" name="name" value="" required="/"/><br><br>
                 <label>借方:</label>
-                <input type="text" name="another" value="" /><br>
-                <label>&nbsp金额</label>
-                <input type="text" name="num" value="" /><br>
+                <input type="text" name="another" value="" required="/"/><br><br>
+                <label>金额:</label>
+                <input type="text" name="num" value="" required="/"/><br><br>
                 
                 <label>所属科目</label>
                 <select name="klass_id">
@@ -74,8 +74,8 @@
                     <option value="{$klass->id}" {eq name="klass->id" value=""}selected="selected"{/eq}>{$klass->name}</option>
                 {/volist}
                 </select>
-                <br>
-                <button type="submit">保存</button>
+                <br><br>
+                <button type="submit" class="btn btn-info" class="bg-info">保存</button>
             </form>
         </div>
     </div>

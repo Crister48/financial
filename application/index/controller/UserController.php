@@ -49,8 +49,8 @@ class UserController extends Index1Controller
         
         // var_dump(Teacher)
         $Teacher->money=$password;
-        if(!$Teacher->save()) {
-            return $this->error('更新失败', url('ecitmoney'));
+        if(!$Teacher->validate()->save($Teacher->getData())) {
+            return $this->error('更新失败,金额不能为空', url('editmoney'));
         }
          return $this->success('修改成功', url('index'));
     }
@@ -139,8 +139,10 @@ class UserController extends Index1Controller
         else{
             $user->money=$user->money+$record->num;
         }
+        if(!$record->validate()->save($record->getData())){
+            return $this->error('添加失败，字段不能为空',url('index'));
+        }
         $user->save($user->getData());
-        $record->save($record->getData());
         return $this->success('添加成功', url('index'));
     }
     public function addrecord1(){
