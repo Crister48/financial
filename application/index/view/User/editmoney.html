@@ -40,7 +40,7 @@
 
         <ul class="dl-menu">
             
-           <li><a href="{:url('index')}">个人资金查询</a></li>
+            <li><a href="{:url('index')}">个人资金查询</a></li>
             <li><a href="{:url('mingxi')}">明细</a></li>
             <li>
                 <a href="Line">记账管理</a>
@@ -65,28 +65,28 @@
                     </div>
                     <div style="margin-top: 100px;">
                         
-                        <form class="form-horizontal" action="{:url('update')}" method="post">
+                        <form class="form-horizontal" action="{:url('updatemoney')}" method="post">
                             
                             <input type="hidden" name="id" value="{$User->getData('id')}" />
                             
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="font-size: 20px;">原密码:</label>
+                                <label class="col-sm-2 control-label" style="font-size: 20px;">密码:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="password" name="oldPassword" />
+                                    <input class="form-control" type="password" name="oldPassword" required="/"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="font-size: 20px;">新密码:</label>
+                                <label class="col-sm-2 control-label" style="font-size: 20px;">我的存款:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="password" name="password" />
+                                    <input class="form-control" type="password" name="password" required="/"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="font-size: 20px;">密码确认:
+                                <label class="col-sm-2 control-label" style="font-size: 20px;">存款确认:
                                 </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="password" name="newPasswordAgain" />
+                                    <input class="form-control" type="password" name="newPasswordAgain" required="/"/>
                                 </div>
                             </div>
                             <br>
@@ -101,7 +101,7 @@
             </nav>
         </div>
     </div>
-    <script type="text/javascript">
+        <script type="text/javascript">
 $(function(){
 
     $( '#dl-menu' ).dlmenu();

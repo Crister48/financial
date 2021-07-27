@@ -4,6 +4,7 @@ use think\Controller;
 use think\Request; 
 use app\common\model\User;
 use app\common\model\Admin;
+use app\common\model\Klass;
 class LoginController extends Controller
 {
     public function index()
@@ -33,7 +34,7 @@ class LoginController extends Controller
             if($tag===1){
                         session('tag',1);
                         session('id', $User->getData('id'));
-                        return $this->success('登录成功', url('admin/index?id='.$User->getData('id')));
+                        return $this->success('登录成功', url('admin/index'));
                     }
             if($tag===2){
                         session('tag',2);

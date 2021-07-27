@@ -55,21 +55,28 @@
         </ul>
     </div>
 </header>
-<div class="row">
+<div class="row text-center" >
         <div class="col-md-12">
-            <table class="table table-hover table-bordered">
-                <tr class="info">
-                    <th>我的存款</th>
-                    
-                    <th>操作</th>
-                </tr>
-                <tr>
-                    <td>{$User->money}</td>
-                    <td><a href="{:url('editmoney?id=' . $User->getData('id'))}"><button type="button" class="btn btn-success">更改</button></a></td>
+            <form action="{:url('insertrecord')}" method="post">
+                <input type="hidden" name="type" value="1">
+                <input type="hidden" name="create_time" value="{:time()}" ><br>
+                <label>名称:</label>
 
-                </tr>
+                <input type="text" name="name" value="" required="/"/><br><br>
+                <label>借方:</label>
+                <input type="text" name="another" value="" required="/"/><br><br>
+                <label>金额:</label>
+                <input type="text" name="num" value="" required="/"/><br><br>
                 
-            </table>
+                <label>所属科目</label>
+                <select name="klass_id">
+                {volist name="klasses" id="klass"}
+                    <option value="{$klass->id}" {eq name="klass->id" value=""}selected="selected"{/eq}>{$klass->name}</option>
+                {/volist}
+                </select>
+                <br><br>
+                <button type="submit" class="btn btn-info" class="bg-info">保存</button>
+            </form>
         </div>
     </div>
 <script type="text/javascript">

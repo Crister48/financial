@@ -5,24 +5,79 @@ use think\Request;
 use think\Db;
 use app\common\model\Admin;
 use app\common\model\User;
+use app\common\model\Klass;
 class AdminController extends IndexController
 {
-    public function index(){
-        $User=Admin::get(session('id'));
-        $this->assign('User',$User);
-        return $this->fetch();
-    }
+    
         public function edit(){
         $User=Admin::get(session('id'));
         $this->assign('User',$User);
         return $this->fetch();
     }
-    public function lookuser(){
+        public function addklass(){
+            return $this->fetch();
+        }
+        public function insertklass(){
+            $name= Request::instance()->post('name');
+            $klass=new Klass;
+            var_dump($name);
+            $klass->name=$name;
+
+            if(!$klass->validate()->save($klass->getData())){
+                return $this->success('新增失败,科目名称不合法', url('addklass'));
+            }
+            return $this->success('新增成功', url('addklass'));
+        }
+    public function lookklass(){
         $Usera=Admin::get(session('id'));
         $this->assign('User',$Usera);
-        $User=new User;
-        $users=$User->select();
-        $this->assign('users',$users);
+        $name = Request::instance()->get('username');
+            
+
+            $pageSize = 5; // 每页显示5条数据
+
+            // 实例化Teacher
+            $Teacher = new Klass; 
+
+            // 定制查询信息
+            if (!empty($name)) {
+                $Teacher->where('name', 'like', '%' . $name . '%');
+            }
+
+            // 按条件查询数据并调用分页
+            $teachers = $Teacher->paginate($pageSize);
+
+            // 向V层传数据
+            $this->assign('users', $teachers);
+
+            // 取回打包后的数据
+            $htmls = $this->fetch();
+        return $this->fetch();
+    }
+    public function index(){
+        $Usera=Admin::get(session('id'));
+        $this->assign('User',$Usera);
+        $name = Request::instance()->get('username');
+            
+
+            $pageSize = 5; // 每页显示5条数据
+
+            // 实例化Teacher
+            $Teacher = new User; 
+
+            // 定制查询信息
+            if (!empty($name)) {
+                $Teacher->where('username', 'like', '%' . $name . '%');
+            }
+
+            // 按条件查询数据并调用分页
+            $teachers = $Teacher->paginate($pageSize);
+
+            // 向V层传数据
+            $this->assign('users', $teachers);
+
+            // 取回打包后的数据
+            $htmls = $this->fetch();
         return $this->fetch();
     }
     public function reset(){
@@ -43,7 +98,7 @@ class AdminController extends IndexController
         $Teacher->password="000000";
         $Teacher->save($Teacher->getData());
         // 进行跳转
-        return $this->success('重置成功，新密码为 000000', url('lookuser'));
+        return $this->success('重置成功，新密码为 000000', url('index'));
     }
     public function delete()
     {
@@ -68,7 +123,31 @@ class AdminController extends IndexController
         }
 
         // 进行跳转
-        return $this->success('删除成功', url('lookuser'));
+        return $this->success('删除成功', url('index'));
+    }
+    public function deleteklass(){
+        // 获取pathinfo传入的ID值.
+        $id = Request::instance()->param('id/d'); // “/d”表示将数值转化为“整形”
+
+        if (is_null($id) || 0 === $id) {
+            return $this->error('未获取到ID信息');
+        }
+
+        // 获取要删除的对象
+        $Teacher = Klass::get($id);
+
+        // 要删除的对象不存在
+        if (is_null($Teacher)) {
+            return $this->error('不存在id为' . $id . '的用户，删除失败');
+        }
+
+        // 删除对象
+        if (!$Teacher->delete()) {
+            return $this->error('删除失败:' . $Teacher->getError());
+        }
+
+        // 进行跳转
+        return $this->success('删除成功', url('lookklass'));
     }
     public function update(){
          $teacherid = input('post.id');
